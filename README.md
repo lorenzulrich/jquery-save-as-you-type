@@ -1,6 +1,8 @@
 # Save As You Type
 
-This jQuery plugin autosaves (To a cookie) as you type, and autorecovers, form data. Auto saving will save as data is entered or changed.
+This is a fork of Save As You Type which works with Cookies.
+
+This jQuery plugin autosaves to the browser local storage (using jStorage) as you type, and autorecovers, form data. Auto saving will save as data is entered or changed.
 
 You have the ability to disable autosaving and auto recovering, and instead use manual calls for each. You can also manually call an erase cookie feature, and manually call to see if a form actually has saved data.
 
@@ -56,7 +58,7 @@ $(function()
 	 *
 	 * Autosave disabled (Must use manual save to save anything)
 	 * Autorecover disabled (Must use a manual recover to recover anything)
-	 * Days 7 (Keeps the save cookie for 7 days)
+	 * Days 7 (Keeps the data for 7 days)
 	 */
 	$('#form_id').sayt({'autosave': false, 'autorecover': false, 'days': 7});
 	
@@ -66,7 +68,7 @@ $(function()
 	 */
 	if($('#form_id').sayt({'checksaveexists': true}) == true)
 	{
-		console.log('Form has an existing save cookie.');
+		console.log('Form has existing data.');
 	}
 	
 	
@@ -95,34 +97,29 @@ $(function()
 	
 	
 	/*
-	 * To erase a forms cookie
+	 * To erase form data
 	 */
 	$('#forms_delete_save_button').click(function()
 	{
 		$('#form_id').sayt({'erase': true});
 		
-		console.log('Form cookie was deleted.');
+		console.log('Form datac was deleted.');
 		return false;
 	});
 	
 });
 ```
 
-Cookies are saved with the name autosaveFormCookie-, and have the ID of the form on the end. For example, a form with the ID of "my_form", would result in a cookie named: autosaveFormCookie-my_form
-
-This is useful is you'd like to delete a cookie via a different method (IE With your server side code after saving a forms input).
-
-
 ## Dependencies
 
-This plugin depends on the included jquery-cookie plugin. More information on that plugin can be found here: https://github.com/carhartl/jquery-cookie
+This plugin depends on the on jStorage: https://github.com/andris9/jStorage
 
 
 ## Author
 
 [Ben Griffiths]
-
+Adapted for jStorage by Lorenz Ulrich
 
 ## License
 
-Copyright (c) 2012 Ben Griffiths. Licensed under the MIT License. Redistributions of files must retain the above copyright notice.
+Copyright (c) 2012 Ben Griffiths, 2014 Lorenz Ulrich. Licensed under the MIT License. Redistributions of files must retain the above copyright notice.
